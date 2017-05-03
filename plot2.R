@@ -1,0 +1,10 @@
+data<-read.csv("household_power_consumption.txt", sep=";")
+days<-subset(data, Date=="1/2/2007" | Date=="2/2/2007")
+GAP<-as.numeric(as.character(days$Global_active_power))
+plot(GAP, pch=NA_integer_, ylab="Global Active Power (kilowatts)", xaxt="n")
+lines(GAP)
+labeldays=c("Thu", "Fri", "Sat")
+axis(1, at=c(1,1440,2880), labeldays)
+#save
+dev.copy(png,"Plot2.png")
+dev.off()
